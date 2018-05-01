@@ -50,6 +50,26 @@ namespace SqlIntro
                 conn.Execute("INSERT INTO product (Name) VALUES(@Name)", new { prod });
             }
         }
-        //THE ONLY THING THAT CHANGES IS THE WAY WE QUERY OUR DATABASE
+
+        public IEnumerable<Product> GetProductsWithReview()
+        {
+            using (var conn = new MySqlConnection(_connectionString))
+            {
+                conn.Open();
+                //conn.Execute("SELECT p.Name, pr.Comments FROM product AS p INNER JOIN productreview AS pr ON p.ProductId = pr.ProductId");
+                return conn.Query<Product>("SELECT p.Name, pr.Comments FROM product AS p INNER JOIN productreview AS pr ON p.ProductId = pr.ProductId");
+
+            }
+        }
+
+        public IEnumerable<Product> GetProductsAndReviews()
+        {
+            using (var conn = new MySqlConnection(_connectionString))
+            {
+                conn.Open();
+                //conn.Execute("SELECT p.ProductId, p.Name, pr.Comments FROM product AS p LEFT OUTER JOIN productreview AS pr ON p.ProductId = pr.ProductId");
+                return conn.Query<Product>("SELECT p.ProductId, p.Name, pr.Comments FROM product AS p LEFT OUTER JOIN productreview AS pr ON p.ProductId = pr.ProductId");
+            }
+        }
     }
 }

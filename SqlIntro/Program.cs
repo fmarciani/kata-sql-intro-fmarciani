@@ -14,7 +14,6 @@ namespace SqlIntro
                 Console.WriteLine("Product Name:" + prod.Name);
             }
 
-           
             Console.ReadLine();
         }
 

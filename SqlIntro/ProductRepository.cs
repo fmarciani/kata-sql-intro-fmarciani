@@ -83,5 +83,38 @@ namespace SqlIntro
                 cmd.ExecuteNonQuery();
             }
         }
+        /// <summary>
+        /// Performs inner join of products that have reviews
+        /// </summary>
+        /*public IEnumerable<Product> GetProductsWithReview()
+        {
+            using (var conn = new MySqlConnection(_connectionString))
+            {
+                var cmd = conn.CreateCommand();
+                cmd.CommandText = "SELECT p.ProductId, p.Name, pr.Comments FROM product AS p INNER JOIN productreview AS pr ON p.ProductId = pr.ProductId;";
+                cmd.ExecuteNonQuery();
+                var dr = cmd.ExecuteReader();
+                while (dr.Read())
+                {
+                    yield return new Product { Name = dr["Name"].ToString() };
+                }
+            }
+        }
+        /// <summary>
+        /// Performs left outer join of products and reviews
+        /// </summary>
+        public IEnumerable<Product> GetProductsAndReviews()
+        {
+            using (var conn = new MySqlConnection(_connectionString))
+            {
+                var cmd = conn.CreateCommand();
+                cmd.CommandText = "SELECT p.ProductId, p.Name, pr.Comments FROM product AS p LEFT OUTER JOIN productreview AS pr ON p.ProductId = pr.ProductId;";
+                var dr = cmd.ExecuteReader();
+                while (dr.Read())
+                {
+                    yield return new Product { Name = dr["Name"].ToString() };
+                }
+            }
+        }*/
     }
 }
