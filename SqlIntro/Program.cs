@@ -18,11 +18,11 @@ namespace SqlIntro
             {
                 Console.WriteLine("\nProduct Name:" + prod.Name + "\nProduct Review:" + prod.Comments);
             }
-            /*
+
             foreach (var prod in repo.GetProductsAndReviews())
             {
-                Console.WriteLine("\nProduct Name:" + prod.Name, "\nProduct Review (if available):" + prod.Comments);
-            }*/
+                Console.WriteLine("\nProduct Name:" + prod.Name + "\nProduct Review (if available):" + prod.Comments);
+            }
 
             Console.ReadLine();
         }
