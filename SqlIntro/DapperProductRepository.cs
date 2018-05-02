@@ -39,7 +39,7 @@ namespace SqlIntro
             using (var conn = new MySqlConnection(_connectionString))
             {
                 conn.Open();
-                conn.Execute("UPDATE product SET Name = @name WHERE ProductID = @id", new { prod.Name, prod.Id });
+                conn.Execute("UPDATE product SET Name = @name WHERE ProductID = @id", new { name = prod.Name, id = prod.Id });
             }
         }
 
@@ -48,7 +48,7 @@ namespace SqlIntro
             using (var conn = new MySqlConnection(_connectionString))
             {
                 conn.Open();
-                conn.Execute("INSERT INTO product (name) VALUES(@name)", new { prod.Name });
+                conn.Execute("INSERT INTO product (name) VALUES(@name)", new { name = prod.Name });
             }
         }
 

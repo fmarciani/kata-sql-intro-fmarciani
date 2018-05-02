@@ -6,7 +6,7 @@ namespace SqlIntro
     {
         static void Main(string[] args)
         {
-            var connectionString = ""; //get connectionString format from connectionstrings.com and change to match your database
+            var connectionString = "Server=localhost;Database=adventureworks;Uid=root;Pwd=DootDoot;";
             var repo = new DapperProductRepo(connectionString);
             var insProd = new Product { Name = "Bob's Burger" }; 
             var delProd = new Product() { Id = 999 }; 
