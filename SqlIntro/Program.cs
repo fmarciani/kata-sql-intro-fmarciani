@@ -15,7 +15,7 @@ namespace SqlIntro
             // Get product
             foreach (var prod in repo.GetProducts())
             {
-                Console.WriteLine("Product Name:" + prod.Name);
+                Console.WriteLine("Product Name: " + prod.Name);
             }
 
             // Delete product
@@ -29,12 +29,12 @@ namespace SqlIntro
 
             foreach (var prod in repo.GetProductsWithReview())
             {
-                Console.WriteLine("\nProduct Name:" + prod.Name + "\nProduct Review:" + prod.Comments);
+                Console.WriteLine("\nProduct Name: " + prod.Name + "\nProduct Review: " + prod.Comments);
             }
 
             foreach (var prod in repo.GetProductsAndReviews())
             {
-                Console.WriteLine("\nProduct Name:" + prod.Name + "\nProduct Review (if available):" + prod.Comments);
+                Console.WriteLine("\nProduct Name: " + prod.Name + "\nProduct Review (if available): " + prod.Comments);
             }
 
             Console.ReadLine();
