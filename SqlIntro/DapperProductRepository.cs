@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using Dapper;
 using MySql.Data;
 using MySql.Data.MySqlClient;
@@ -29,7 +30,7 @@ namespace SqlIntro
             using (var conn = new MySqlConnection(_connectionString))
             {
                 conn.Open();
-                conn.Execute("DELETE from Product WHERE ProductId = @id", new { id });
+                conn.Execute("DELETE from Product WHERE ProductID = @id", new { id });
             }
         }
 
@@ -38,7 +39,7 @@ namespace SqlIntro
             using (var conn = new MySqlConnection(_connectionString))
             {
                 conn.Open();
-                conn.Execute("UPDATE product SET Name = @Name WHERE Id = @id", new { prod });
+                conn.Execute("UPDATE product SET Name = @name WHERE ProductID = @id", new { prod.Name, prod.Id });
             }
         }
 
@@ -47,7 +48,7 @@ namespace SqlIntro
             using (var conn = new MySqlConnection(_connectionString))
             {
                 conn.Open();
-                conn.Execute("INSERT INTO product (Name) VALUES(@Name)", new { prod });
+                conn.Execute("INSERT INTO product (name) VALUES(@name)", new { prod.Name });
             }
         }
 
@@ -57,7 +58,7 @@ namespace SqlIntro
             {
                 conn.Open();
                 //conn.Execute("SELECT p.Name, pr.Comments FROM product AS p INNER JOIN productreview AS pr ON p.ProductId = pr.ProductId");
-                return conn.Query<Product>("SELECT p.Name, pr.Comments FROM product AS p INNER JOIN productreview AS pr ON p.ProductId = pr.ProductId");
+                return conn.Query<Product>("SELECT p.ProductId as Id, p.Name, pr.Comments FROM product AS p INNER JOIN productreview AS pr ON p.ProductId = pr.ProductId");
 
             }
         }

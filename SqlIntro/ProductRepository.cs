@@ -86,7 +86,7 @@ namespace SqlIntro
         /// <summary>
         /// Performs inner join of products that have reviews
         /// </summary>
-        /*public IEnumerable<Product> GetProductsWithReview()
+        public IEnumerable<Product> GetProductsWithReview()
         {
             using (var conn = new MySqlConnection(_connectionString))
             {
@@ -115,6 +115,6 @@ namespace SqlIntro
                     yield return new Product { Name = dr["Name"].ToString() };
                 }
             }
-        }*/
+        }
     }
 }
