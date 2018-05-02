@@ -12,11 +12,20 @@ namespace SqlIntro
             var delProd = new Product() { Id = 999 }; 
             var upProd = new Product() { Name = "Bob's Burger", Id = 5000 };
 
-
+            // Get product
             foreach (var prod in repo.GetProducts())
             {
                 Console.WriteLine("Product Name:" + prod.Name);
             }
+
+            // Delete product
+            repo.DeleteProduct(delProd.Id);
+
+            // Update product
+            repo.UpdateProduct(upProd);
+
+            // Insert product
+            repo.InsertProduct(insProd);
 
             foreach (var prod in repo.GetProductsWithReview())
             {
@@ -27,15 +36,6 @@ namespace SqlIntro
             {
                 Console.WriteLine("\nProduct Name:" + prod.Name + "\nProduct Review (if available):" + prod.Comments);
             }
-
-            // Insert product
-            repo.InsertProduct(insProd); 
-
-            // Delete product
-            repo.DeleteProduct(delProd.Id); // same as above
-
-            // Update product
-            repo.UpdateProduct(upProd); // same as above
 
             Console.ReadLine();
         } 
