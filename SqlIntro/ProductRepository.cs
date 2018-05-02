@@ -48,6 +48,7 @@ namespace SqlIntro
             {
                 var cmd = conn.CreateCommand();
                 cmd.CommandText = "DELETE FROM product WHERE ProductId = @Id";
+                cmd.Parameters.AddWithValue("@Id", id);
                 cmd.ExecuteNonQuery();
             }
         }
@@ -95,7 +96,7 @@ namespace SqlIntro
                 var dr = cmd.ExecuteReader();
                 while (dr.Read())
                 {
-                    yield return new Product { Name = dr["Name"].ToString() };
+                    yield return new Product { Name = dr["Name"].ToString(), Comments = dr["Comments"].ToString() };
                 }
             }
         }
@@ -111,7 +112,7 @@ namespace SqlIntro
                 var dr = cmd.ExecuteReader();
                 while (dr.Read())
                 {
-                    yield return new Product { Name = dr["Name"].ToString() };
+                    yield return new Product { Name = dr["Name"].ToString(), Comments = dr["Comments"].ToString() };
                 }
             }
         }
